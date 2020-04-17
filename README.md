@@ -19,7 +19,7 @@ It is assumed that
    If not, refer to "Install the Arduino Desktop IDE" on the
    [Arduino site](https://www.arduino.cc/en/Guide/HomePage).
  - The library directory is at its default location.
-   For me, Christoph, that is `C:\Users\sciosense\Documents\Arduino\libraries`.
+   For me, that is `C:\Users\sciosense\Documents\Arduino\libraries`.
 
 ## Installation
 Installation steps
@@ -27,7 +27,7 @@ Installation steps
 - Click the green button Clone or download on the right side.
 - From the pop-up choose Download ZIP.
 - In Arduino IDE, select Sketch > Include Library > Manage Libraries ... and browse to the just downloaded ZIP file.
-- When the IDE is ready this README.md should be located at e.g. C:\Users\sciosense\Documents\Arduino\libraries\sciosense_ens210\README.md.
+- When the IDE is ready this README.md should be located at e.g. `C:\Users\sciosense\Documents\Arduino\libraries\sciosense_ens210\README.md`.
 
 ## Build an example
 To build an example sketch
