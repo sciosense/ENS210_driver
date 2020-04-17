@@ -1,5 +1,6 @@
 # ScioSense ENS210 
 Arduino library for the ENS210 temperature & humidity sensor with I2C interface from ScioSense
+It is based on a library written by Maarten Pennings. Thanks for all the work. 
 
 ## Introduction
 This project is an Arduino *library*. It implements a driver with examples for the ENS210. The ENS210 chip is a digital temperature & humidity sensor with an I2C interface.
