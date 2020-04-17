@@ -10,8 +10,9 @@ Note that the ENS210 requires a supply voltage of 1.71V .. 1.98V.
 
 ## Links
 The ENS210 is made by [Sciosense](http://www.sciosense.com).
- - The datasheet of the ENS210 is not yet released
-
+ - The datasheet of the ENS210 can be downloaded here
+   https://www.sciosense.com/products/relative-humidity-and-temperature-sensors/ens210-relative-humidity-and-temperature-sensor/
+   
 ## Prerequisites
 It is assumed that
  - The Arduino IDE has been installed.
