@@ -37,4 +37,4 @@ To build an example sketch
  - Make sure Tools > Board lists the correct board.
  - Select Sketch > Verify/Compile.
  
-# ScioSense is a Joint Venture of ams AG 
+### ScioSense is a Joint Venture of ams AG 
