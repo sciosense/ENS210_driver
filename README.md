@@ -8,7 +8,7 @@ This project is an Arduino *library*. It implements a driver with examples for t
 
 The driver in this Arduino library is based on the code supplied by *Sciosense*, the manufacturer of the chip.
 
-Note that the ENS210 requires a supply voltage of 1.71V .. 1.98V.
+Note that the ENS210 requires a supply voltage of 1.71V .. 3.60V.
 
 ## Links
 The ENS210 is made by [Sciosense](http://www.sciosense.com).
@@ -29,7 +29,7 @@ Installation steps
 - Click the green button Clone or download on the right side.
 - From the pop-up choose Download ZIP.
 - In Arduino IDE, select Sketch > Include Library > Manage Libraries ... and browse to the just downloaded ZIP file.
-- When the IDE is ready this README.md should be located at e.g. `C:\Users\sciosense\Documents\Arduino\libraries\sciosense_ens210\README.md`.
+- When the IDE is ready this README.md should be located at e.g. `C:\Users\sciosense\Documents\Arduino\libraries\ScioSense_ENS210\README.md`.
 
 ## Build an example
 To build an example sketch
