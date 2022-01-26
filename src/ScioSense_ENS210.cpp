@@ -63,6 +63,39 @@ bool ScioSense_ENS210::begin(bool debug)
 	return result;
 }
 
+// Init I2C communication, resets ENS210 and checks its PART_ID. Returns false on I2C problems or wrong PART_ID.
+// Stores solder correction.
+bool ScioSense_ENS210::begin(TwoWire *wire, bool userWire, bool debug) 
+{
+	bool result;
+
+	debugENS210 = debug;
+	
+	//init I2C
+	if (!userWire) {
+		_i2c_init();
+	} else {
+		_wire=wire;
+	}
+	if (debugENS210) {
+		Serial.println("ens210 debug - I2C init done");
+	}
+  
+	// Record solder correction
+	this->_soldercorrection= 0;
+	this->_available = false;
+	this->_singleMode = true;
+	this->_t_data = -1;
+	this->_h_data = -1;	
+	this->lowpower(false);
+	
+	result = getversion();
+	
+	if(this->_partID == ENS210_PARTID ) {
+		this->_available = true;
+	}
+	return result;
+}
 
 // Sends a reset to the ENS210. Returns false on I2C problems.
 bool ScioSense_ENS210::reset(void) 
@@ -367,6 +400,7 @@ void ScioSense_ENS210::correction_set(int correction)
 void ScioSense_ENS210::_i2c_init()
 {
 	Wire.begin();
+	_wire = &Wire;
 }
 /**************************************************************************/
 
@@ -394,15 +428,15 @@ uint8_t ScioSense_ENS210::read(uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t 
 	while(pos < num){
 		
 		uint8_t read_now = 32;//min((uint8_t)32, (uint8_t)(num - pos));
-		Wire.beginTransmission((uint8_t)addr);
+		_wire->beginTransmission((uint8_t)addr);
 		
-		Wire.write((uint8_t)reg + pos);
-		result = Wire.endTransmission();
-		Wire.requestFrom((uint8_t)addr, read_now);
+		_wire->write((uint8_t)reg + pos);
+		result = _wire->endTransmission();
+		_wire->requestFrom((uint8_t)addr, read_now);
 		
 		//for(int i=0; i<read_now; i++){
 		for(int i=0; i<num; i++){
-			buf[pos] = Wire.read();
+			buf[pos] = _wire->read();
 			if (debugENS210) {
 				Serial.print("Pos: ");
 				Serial.print(pos);
@@ -438,10 +472,10 @@ uint8_t ScioSense_ENS210::write(uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t
 		Serial.println();
 	}
 	
-	Wire.beginTransmission((uint8_t)addr);
-	Wire.write((uint8_t)reg);
-	Wire.write((uint8_t *)buf, num);
-	uint8_t result = Wire.endTransmission();
+	_wire->beginTransmission((uint8_t)addr);
+	_wire->write((uint8_t)reg);
+	_wire->write((uint8_t *)buf, num);
+	uint8_t result = _wire->endTransmission();
 	return result;
 }
 

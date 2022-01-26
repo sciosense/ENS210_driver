@@ -62,6 +62,7 @@ class ScioSense_ENS210 {
 		
 	public:
 		bool 				begin(bool debug=false);				// init i2c interface, get partID und uID. Returns false on I2C problems or wrong PART_ID.
+		bool 				begin(TwoWire *wire, bool userWire, bool debug=false);				// init i2c interface, get partID und uID. Returns false on I2C problems or wrong PART_ID.
 		bool 				setSingleMode(bool enable);				// false for continuous mode / true for single shot measurement. Returns false on I2C problems.
 		
 		bool				available()	{ return this->_available; }
@@ -115,6 +116,7 @@ class ScioSense_ENS210 {
 		uint8_t				read(uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t num);
 		uint8_t				write(uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t num);
 		void 				_i2c_init();
+		TwoWire				*_wire=NULL;
 };
 
 
