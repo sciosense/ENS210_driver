@@ -3,6 +3,8 @@ Arduino library for the ENS210 temperature & humidity sensor with I2C interface 
 It is based on a library written by Maarten Pennings. Thanks for all the work.
 https://github.com/maarten-pennings/ENS210
 
+> :warning: This library is deprecated and no longer maintained. Kindly refer to its successor: [ens21x-arduino](https://github.com/sciosense/ENS21x_driver).
+
 ## Introduction
 This project is an Arduino *library*. It implements a driver with examples for the ENS210. The ENS210 chip is a digital temperature & humidity sensor with an I2C interface.
 
